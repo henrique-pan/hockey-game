@@ -22,16 +22,30 @@ class MainViewController: UIViewController {
     private let prizes = [(0, "Choississez un pari"),
                           (1, "Une grosse poutine"),
                           (2, "Des billets pour le prochain match de hockey"),
-                          (3, "3 Semaines de Pizza-Pizza gratuites")]
+                          (3, "3 Semaines de Pizza-Pizza")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textFieldPlayer1.delegate = self
+        textFieldPlayer2.delegate = self
+        
         selectedPrize = 0
         picker.selectedRow(inComponent: 0)
         
         playButton.layer.cornerRadius = 5
         playButton.layer.borderWidth = 1
         playButton.layer.borderColor = UIColor.black.cgColor
+        
+        picker.setValue(UIColor.white, forKeyPath: "textColor")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        selectedPrize = 0
+        picker.selectedRow(inComponent: 0)
+        textFieldPlayer1.text = ""
+        textFieldPlayer2.text = ""
+        textFieldPlayer1.becomeFirstResponder()
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -70,6 +84,13 @@ class MainViewController: UIViewController {
     
 }
 
+extension MainViewController: UITextFieldDelegate {    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+}
+
 //MARK: Extension Picker
 extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -87,6 +108,16 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedPrize = prizes[row].0
+    }
+    
+    //# MARK: - pickerView
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        pickerLabel.textColor = UIColor.white
+        pickerLabel.text = prizes[row].1
+        pickerLabel.font = UIFont(name: "Arial", size: 30)
+        pickerLabel.textAlignment = NSTextAlignment.center
+        return pickerLabel
     }
     
 }
