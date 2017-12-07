@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         selectedPrize = 0
-        picker.selectedRow(inComponent: 0)
+        picker.selectRow(0, inComponent: 0, animated: true)
         textFieldPlayer1.text = ""
         textFieldPlayer2.text = ""
         textFieldPlayer1.becomeFirstResponder()
