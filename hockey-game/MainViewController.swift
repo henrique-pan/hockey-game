@@ -1,13 +1,14 @@
 //
-//  ViewController.swift
+//  StadiumViewController.swift
 //  hockey-game
 //
-//  Created by eleves on 2017-12-04.
+//  Created by Henrique Nascimento on 2017-12-04.
 //  Copyright © 2017 com.henrique. All rights reserved.
 //
 
 import UIKit
 
+// ViewController that represents the main class
 class MainViewController: UIViewController {
     
     //MARK: Outlets

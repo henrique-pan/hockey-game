@@ -2,12 +2,13 @@
 //  StadiumViewController.swift
 //  hockey-game
 //
-//  Created by eleves on 2017-12-04.
+//  Created by Henrique Nascimento on 2017-12-04.
 //  Copyright © 2017 com.henrique. All rights reserved.
 //
 
 import UIKit
 
+// ViewController that represents the stadium
 class StadiumViewController: UIViewController {
     
     //MARK: Outlets
@@ -57,7 +58,7 @@ class StadiumViewController: UIViewController {
             buttonPlayer1.isEnabled = false
             buttonPlayer1.alpha = 0.3
         }
-        startDisk()
+        starDisk()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -68,9 +69,8 @@ class StadiumViewController: UIViewController {
         selectedPlayer = Int(arc4random_uniform(2))
     }
     
-    func startDisk() {
-        imageDisk.layer.cornerRadius = 12.5
-        
+    func starDisk() {
+        imageDisk.layer.cornerRadius = 12.5        
     }
     
     @IBAction func endGame(_ sender: UIButton) {
@@ -154,6 +154,7 @@ class StadiumViewController: UIViewController {
     }
 }
 
+// Generate random number in range
 extension Int {
     static func random(lowerBound: Int, upperBound: Int) -> Int {
         var offset = 0
